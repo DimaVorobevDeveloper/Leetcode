@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp2\Leetcode.Services.csproj" />
+    <ProjectReference Include="..\Leetcode.Services\Leetcode.Services.csproj" />
   </ItemGroup>
 
 </Project>
