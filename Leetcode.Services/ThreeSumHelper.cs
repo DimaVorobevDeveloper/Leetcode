@@ -5,7 +5,6 @@ namespace Leetcode.Services;
 
 public class ThreeSumHelper
 {
-    [Benchmark]
     public static IList<IList<int>> ThreeSum(int[] nums)
     {
         Console.WriteLine($"input data count - {nums.Length}");

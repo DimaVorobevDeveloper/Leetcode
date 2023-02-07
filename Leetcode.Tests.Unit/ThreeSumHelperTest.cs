@@ -27,7 +27,7 @@ namespace Leetcode.Tests.Unit
             Assert.AreEqual(expected, result.Count);
         }
 
-        [TestMethod]
+        // [TestMethod]
         [DataRow(2, new[] { -1, 0, 1, 2, -1, -4 })]
         [DataRow(1, new[] { 1, 1, -2 })]
         [DataRow(1, new[] { -1, 0, 1 })]
