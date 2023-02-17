@@ -18,7 +18,7 @@ public class FourSumService
        Input: nums = [2,2,2,2,2], target = 8
        Output: [[2,2,2,2]]
      */
-    public static IList<IList<int>> FourSum(int[] nums, int target)
+    public static IList<IList<int>> GetUniqueQuadruplets(int[] nums, int target)
     {
         var result = new List<IList<int>>();
 

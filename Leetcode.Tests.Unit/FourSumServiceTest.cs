@@ -19,7 +19,7 @@ Output: [[2,2,2,2]]
     [DynamicData(nameof(CombinationTests), DynamicDataSourceType.Method)]
     public void FourSum(TestData testData)
     {
-        var result = FourSumService.FourSum(testData.nums, testData.target);
+        var result = FourSumService.GetUniqueQuadruplets(testData.nums, testData.target);
 
         Assert.AreEqual(testData.expected, result);
     }

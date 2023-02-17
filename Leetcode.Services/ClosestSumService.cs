@@ -1,8 +1,8 @@
 ﻿namespace Leetcode.Services;
 
-public class SumClosestService
+public class ClosestSumService
 {
-    public static int ThreeSumClosest(int[] nums, int target)
+    public static int Get(int[] nums, int target)
     {
         var minValue = Math.Abs(nums[0] + nums[1] + nums[2] - target);
         var sign = Math.Sign(nums[0] + nums[1] + nums[2] - target);
