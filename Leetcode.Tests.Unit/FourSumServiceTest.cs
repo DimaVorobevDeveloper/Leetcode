@@ -15,27 +15,31 @@ Output: [[2,2,2,2]]
      *
      */
 
-    public static IEnumerable<(int[][] expected, int target, int[] nums)> CombinationTests()
+    [DataTestMethod]
+    [DynamicData(nameof(CombinationTests), DynamicDataSourceType.Method)]
+    public void FourSum(TestData testData)
     {
-        yield return new(new int[][] { new[] { -2, -1, 1, 2 }, new[] { -2, -1, 1, 2 } }, 8, new[] { 2, 2, 2, 2, 2 });
+        var result = FourSumService.FourSum(testData.nums, testData.target);
+
+        Assert.AreEqual(testData.expected, result);
     }
 
-    public (int[][] expected, int target, int[] nums) combination_tests1()
+    public class TestData
     {
-        return new(new int[][] { new[] { -2, -1, 1, 2 }, new[] { -2, -1, 1, 2 } }, 8, new[] { 2, 2, 2, 2, 2 });
+        public int[][] expected { get; set; }
+        public int target { get; set; }
+        public int[] nums { get; set; }
+
+        public TestData(int[][] expected, int target, int[] nums)
+        {
+            this.expected = expected;
+            this.target = target;
+            this.nums = nums;
+        }
     }
 
-    [TestMethod]
-    [DynamicData(nameof(CombinationTests))]
-    public void FourSum(int[][] expected, int target, int[] nums)
+    public static IEnumerable<TestData[]> CombinationTests()
     {
-        var t = new Stopwatch();
-        Console.WriteLine($"run... ");
-        t.Start();
-        var result = FourSumService.FourSum(nums, target);
-        t.Stop();
-        Console.WriteLine($"ElapsedMilliseconds = {t.ElapsedMilliseconds}");
-        Console.WriteLine($"expected = {expected}, result = {result}");
-        Assert.AreEqual(expected, result);
+        yield return new TestData[] { new TestData(new int[][] { new[] { -2, -1, 1, 2 }, new[] { -2, -1, 1, 2 } }, 8, new[] { 2, 2, 2, 2, 2 }) };
     }
 }

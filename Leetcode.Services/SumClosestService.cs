@@ -1,15 +1,11 @@
-﻿using System.Diagnostics;
-
-namespace Leetcode.Services;
+﻿namespace Leetcode.Services;
 
 public class SumClosestService
 {
     public static int ThreeSumClosest(int[] nums, int target)
     {
-        Console.WriteLine($"input data count - {nums.Length}");
-
-        var MinValue = Math.Abs(nums[0] + nums[1] + nums[2] - target);
-        var Sign = Math.Sign(nums[0] + nums[1] + nums[2] - target);
+        var minValue = Math.Abs(nums[0] + nums[1] + nums[2] - target);
+        var sign = Math.Sign(nums[0] + nums[1] + nums[2] - target);
 
         if (nums.Length == 3)
         {
@@ -18,8 +14,8 @@ public class SumClosestService
 
         if (nums.Count(x => x == 0) >= 3)
         {
-            MinValue = Math.Abs(target);
-            Sign = -1;
+            minValue = Math.Abs(target);
+            sign = -1;
         }
 
         nums = nums.OrderByDescending(x => x).ToArray();
@@ -44,10 +40,10 @@ public class SumClosestService
         var minMore = hMore.Any() ? hMore.Min() : int.MaxValue;
         var minLess = hLess.Any() ? hLess.Min() : int.MaxValue;
 
-        MinValue = new[] { minMore, minLess }.Min();
-        Sign = minMore < minLess ? 1 : -1;
+        minValue = new[] { minMore, minLess }.Min();
+        sign = minMore < minLess ? 1 : -1;
 
-        var result = target + Sign * MinValue;
+        var result = target + sign * minValue;
 
         return result;
     }

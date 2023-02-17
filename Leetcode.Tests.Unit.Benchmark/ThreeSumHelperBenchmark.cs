@@ -27,9 +27,9 @@ namespace Leetcode.Tests.Unit.Benchmark
         }
 
         [Benchmark]
-        public IList<IList<int>> ThreeSum() => ThreeSumHelper.ThreeSum(nums);
+        public IList<IList<int>> ThreeSum() => ThreeSumService.ThreeSum(nums);
 
         [Benchmark]
-        public IList<IList<int>> ThreeSumWithoutOptimizeWay() => ThreeSumHelper.ThreeSumWithoutOptimizeWay(nums);
+        public IList<IList<int>> ThreeSumWithoutOptimizeWay() => ThreeSumService.ThreeSumWithoutOptimizeWay(nums);
     }
 }

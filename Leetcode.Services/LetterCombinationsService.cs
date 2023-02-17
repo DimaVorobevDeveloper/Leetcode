@@ -39,12 +39,11 @@ public class LetterCombinationsService
         {
             var newCombinationsArr = new string[combinationsArr.Length * vals[i].Length];
             var k = 0;
-            for (int l = 0; l < combinationsArr.Length; l++)
+            foreach (var combinationArr in combinationsArr)
             {
                 for (int j = 0; j < vals[i].Length; j++)
                 {
-                    newCombinationsArr[k] = combinationsArr[l] + vals[i][j];
-                    // newCombinationsArr[k] = $"{combinationsArr[l]}{vals[i][j]}";
+                    newCombinationsArr[k] = combinationArr + vals[i][j];
                     k++;
                 }
             }
