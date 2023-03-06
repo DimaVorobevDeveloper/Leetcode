@@ -16,8 +16,64 @@ public class RemoveNthFromEndService
 
     Input: head = [1,2], n = 1
     Output: [1] */
-    public static ListNode Get(ListNode head, int n)
+    public static int[] Do(ListNode head, int n)
     {
-        return null;
+        HashSet<(int, ListNode)> st = new(); // number of node, node value
+        int j = 0;
+        GetListNodeItems(st, head, j);
+
+        var newHead = DeleteListNodeItem(st.Count, n, head);
+
+        if (newHead == null)
+        {
+            return Array.Empty<int>();
+        }
+
+        List<int> l = new();
+        ToArray(l, newHead);
+
+        return l.ToArray();
+    }
+
+    public static void GetListNodeItems(HashSet<(int, ListNode)> st, ListNode head, int j)
+    {
+        j++;
+        st.Add((j, head));
+        if (head.next != null)
+        {
+            GetListNodeItems(st, head.next, j);
+        }
+    }
+
+    public static void ToArray(List<int> l, ListNode head)
+    {
+        l.Add(head.val);
+        if (head.next != null)
+        {
+            ToArray(l, head.next);
+        }
+    }
+
+    public static ListNode DeleteListNodeItem(int length, int k, ListNode head)
+    {
+        int nodeFromBeginning = length - k + 1;
+        ListNode prev = null;
+        ListNode temp = head;
+        for (int i = 1; i < nodeFromBeginning; i++)
+        {
+            prev = temp;
+            temp = temp.next;
+        }
+
+        if (prev == null)
+        {
+            head = head.next;
+            return head;
+        }
+        else
+        {
+            prev.next = prev.next.next;
+            return head;
+        }
     }
 }
