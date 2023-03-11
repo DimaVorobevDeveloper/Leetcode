@@ -1,5 +1,3 @@
-using BenchmarkDotNet.Running;
-
 namespace Leetcode.Tests.Unit.Benchmark;
 
 internal class Program

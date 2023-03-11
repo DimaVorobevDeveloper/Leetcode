@@ -56,10 +56,10 @@ public class RemoveNthFromEndService
 
     public static ListNode DeleteListNodeItem(int length, int k, ListNode head)
     {
-        int nodeFromBeginning = length - k + 1;
+        int nodeFromBeginning = length - k;
         ListNode prev = null;
         ListNode temp = head;
-        for (int i = 1; i < nodeFromBeginning; i++)
+        for (int i = 0; i < nodeFromBeginning; i++)
         {
             prev = temp;
             temp = temp.next;

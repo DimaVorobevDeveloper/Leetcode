@@ -19,8 +19,105 @@ public class MergeTwoListsService
     Example 3:
     Input: list1 = [], list2 = [0]
     Output: [0]    */
-    public static ListNode MergeTwoLists(ListNode list1, ListNode list2)
+    private static readonly Func<ListNode, ListNode, bool> checkIfFirstMore = (first, second) =>
+     {
+         if (first == null)
+             return false;
+
+         if (second == null)
+             return true;
+
+         return first.val > second.val;
+     };
+
+    public static int[] MergeTwoLists(ListNode list1, ListNode list2)
     {
-        return null;
+        var merged = new ListNode(-1);
+        MergeTwoListsRecursion(list1, list2, merged);
+
+        List<int> l = new();
+        ToArray(l, merged.next);
+        return l.ToArray(); // merged
+    }
+
+    public static void MergeTwoListsRecursion(ListNode next1, ListNode next2, ListNode merged)
+    {
+        if (next1 != null || next2 != null)
+        {
+            var isFirstMore = checkIfFirstMore(next1, next2);
+            var currentValue = isFirstMore ? next2?.val : next1?.val;
+
+            if (!currentValue.HasValue)
+            {
+                currentValue = next1?.val ?? next2?.val;
+                isFirstMore = next2 != null;
+            }
+
+            merged.next = new ListNode(currentValue.Value);
+
+            // делаем получение минимального следующего элемента
+            if (isFirstMore)
+            {
+                next2 = next2.next;
+            }
+            else
+            {
+                next1 = next1.next;
+            }
+
+            MergeTwoListsRecursion(next1, next2, merged.next);
+        }
+    }
+
+    public static int[] MergeTwoListsv1(ListNode list1, ListNode list2)
+    {
+        var next1 = list1;
+        var next2 = list2;
+
+        Func<ListNode, ListNode, bool> checkIfFirstMore = (first, second) => first.val > second.val;
+
+        var isFirstMore = false;
+        var merged = new ListNode(-1);
+        var tmp = new ListNode(-1);
+
+        while (next1?.next != null || next2?.next != null)
+        {
+            isFirstMore = checkIfFirstMore(next1, next2);
+
+            var currentValue = isFirstMore ? next2.val : next1.val;
+
+            merged = tmp;
+            merged.next = new ListNode(currentValue);
+
+            tmp = merged; // временно храним последнее состояние.
+
+            // делаем получение минимального следующего элемента
+            if (isFirstMore && next2 != null)
+            {
+                next2 = next2.next;
+            }
+            else if (next1 != null)
+            {
+                next1 = next1.next;
+            }
+
+            MergeTwoLists(next1, next2);
+        }
+
+        List<int> l = new();
+        ToArray(l, merged);
+        return l.ToArray(); // merged
+    }
+
+    public static void ToArray(List<int> l, ListNode head)
+    {
+        if (head == null)
+            return;
+
+        l.Add(head.val);
+        if (head.next != null)
+        {
+            ToArray(l, head.next);
+        }
     }
 }

@@ -3,7 +3,7 @@
 namespace Leetcode.Tests.Unit;
 
 [TestClass]
-public class LetterCombinationsServiceTest
+public class LetterCombinationsServiceTests
 {
     /*
      * Example 1:

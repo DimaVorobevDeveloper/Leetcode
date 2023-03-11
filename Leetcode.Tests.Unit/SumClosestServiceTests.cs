@@ -3,7 +3,7 @@
 namespace Leetcode.Tests.Unit;
 
 [TestClass]
-public class SumClosestServiceTest
+public class SumClosestServiceTests
 {
     [TestMethod]
     [DataRow(0, 1, new[] { 0, 0, 0 })]

@@ -4,7 +4,7 @@ using Leetcode.Tests.Unit.Models;
 namespace Leetcode.Tests.Unit;
 
 [TestClass]
-public class FourSumServiceTest
+public class FourSumServiceTests
 {
     /* Input: nums = [1,0,-1,0,-2,2], target = 0 Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
      * Input: nums = [2,2,2,2,2], target = 8 Output: [[2,2,2,2]] */
