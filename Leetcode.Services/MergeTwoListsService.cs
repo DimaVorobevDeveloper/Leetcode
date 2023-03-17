@@ -69,46 +69,6 @@ public class MergeTwoListsService
         }
     }
 
-    public static int[] MergeTwoListsv1(ListNode list1, ListNode list2)
-    {
-        var next1 = list1;
-        var next2 = list2;
-
-        Func<ListNode, ListNode, bool> checkIfFirstMore = (first, second) => first.val > second.val;
-
-        var isFirstMore = false;
-        var merged = new ListNode(-1);
-        var tmp = new ListNode(-1);
-
-        while (next1?.next != null || next2?.next != null)
-        {
-            isFirstMore = checkIfFirstMore(next1, next2);
-
-            var currentValue = isFirstMore ? next2.val : next1.val;
-
-            merged = tmp;
-            merged.next = new ListNode(currentValue);
-
-            tmp = merged; // временно храним последнее состояние.
-
-            // делаем получение минимального следующего элемента
-            if (isFirstMore && next2 != null)
-            {
-                next2 = next2.next;
-            }
-            else if (next1 != null)
-            {
-                next1 = next1.next;
-            }
-
-            MergeTwoLists(next1, next2);
-        }
-
-        List<int> l = new();
-        ToArray(l, merged);
-        return l.ToArray(); // merged
-    }
-
     public static void ToArray(List<int> l, ListNode head)
     {
         if (head == null)

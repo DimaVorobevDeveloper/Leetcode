@@ -54,7 +54,6 @@ public class FourSumService
                         {
                             Console.WriteLine(e.Message);
                         }
-
                     }
                 }
             }

@@ -1,3 +1,5 @@
+using BenchmarkDotNet.Running;
+
 namespace Leetcode.Tests.Unit.Benchmark;
 
 internal class Program
@@ -6,7 +8,9 @@ internal class Program
     private static void Main(string[] args)
     {
         //var summary = BenchmarkRunner.Run<ThreeSumHelperBenchmark>();
-        A();
+        //var summary = BenchmarkRunner.Run<FourSumServiceBenchmark>();
+        var summary = BenchmarkRunner.Run<SpanExamplesBenchmark>();
+        // A();
     }
 
     public static async Task A()

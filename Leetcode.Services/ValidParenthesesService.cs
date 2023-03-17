@@ -1,4 +1,6 @@
-﻿namespace Leetcode.Services;
+﻿using Leetcode.Services.Models;
+
+namespace Leetcode.Services;
 public class ValidParenthesesService
 {
     /*Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
@@ -12,7 +14,7 @@ public class ValidParenthesesService
         Stack<char> st = new();
         foreach (var ch in s)
         {
-            if (CharDict.TryGetValue(ch, out var charClose))
+            if (CommonConstants.CharDict.TryGetValue(ch, out var charClose))
             {
                 st.Push(ch);
                 continue;
@@ -24,7 +26,7 @@ public class ValidParenthesesService
             }
 
             var last = st.Pop();
-            if (CharDict[last] != ch)
+            if (CommonConstants.CharDict[last] != ch)
             {
                 return false;
             }
@@ -32,12 +34,5 @@ public class ValidParenthesesService
 
         return st.Count == 0;
     }
-
-    private static Dictionary<char, char> CharDict = new()
-    {
-        {'(', ')'},
-        {'{', '}'},
-        {'[', ']'},
-    };
 }
 

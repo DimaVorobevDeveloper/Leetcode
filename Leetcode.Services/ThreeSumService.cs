@@ -50,6 +50,57 @@ public class ThreeSumService
         return result;
     }
 
+    public static IList<IList<int>> ThreeSumWithSpan(int[] nums)
+    {
+        var h = new HashSet<(int, int, int)>();
+        if (nums.Count(x => x == 0) >= 3)
+        {
+            h.Add((0, 0, 0));
+        }
+
+        if (nums.Count(x => x == 0) > 1)
+        {
+            var newNums = nums.ToList();
+            newNums.RemoveAll(x => x == 0);
+            newNums.Add(0);
+            nums = newNums.ToArray();
+        }
+
+        if (nums.All(x => x > 0) || nums.All(x => x < 0))
+        {
+            return new List<IList<int>>();
+        }
+
+        var list = new List<(int, int)>();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            list.Add((nums[i], i));
+        }
+        var dict1 = list.GroupBy(x => x.Item1).ToDictionary(x => x.Key, x => x.Select(x => x.Item2).ToArray());
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            for (int j = i; j < nums.Length; j++)
+            {
+                if (i != j && dict1.TryGetValue(-nums[i] - nums[j], out int[] indexes))
+                {
+                    if (indexes.Any(idx => idx == i || idx == j))
+                        continue;
+
+                    int[] people1 = new[] { 1, 2 };
+                    var peopleSpan1 = new Span<int>(people1);
+
+                    var r1 = new Span<int> { -nums[i] - nums[j], nums[i], nums[j] };
+                    Array.Sort(r1);
+                    h.Add((r[0], r[1], r[2]));
+                }
+            }
+        }
+
+        var result = (IList<IList<int>>)h.Select(x => (IList<int>)new List<int> { x.Item1, x.Item2, x.Item3 }).ToList();
+        return result;
+    }
+
     public static IList<IList<int>> ThreeSumWithoutOptimizeWay(int[] nums)
     {
         Console.WriteLine($"input data count - {nums.Length}");
