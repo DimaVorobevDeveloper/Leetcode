@@ -90,9 +90,9 @@ public class ThreeSumService
                     int[] people1 = new[] { 1, 2 };
                     var peopleSpan1 = new Span<int>(people1);
 
-                    var r1 = new Span<int> { -nums[i] - nums[j], nums[i], nums[j] };
-                    Array.Sort(r1);
-                    h.Add((r[0], r[1], r[2]));
+                    //var r1 = new Span<int> { -nums[i] - nums[j], nums[i], nums[j] };
+                    //Array.Sort(r1);
+                    //h.Add((r[0], r[1], r[2]));
                 }
             }
         }

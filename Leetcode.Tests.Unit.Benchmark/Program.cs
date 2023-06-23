@@ -4,13 +4,19 @@ namespace Leetcode.Tests.Unit.Benchmark;
 
 internal class Program
 {
+    private static int a;
+
+    static Program()
+    {
+        Program.a = a;
+    }
+
     // !!! run in release mode
     private static void Main(string[] args)
     {
         //var summary = BenchmarkRunner.Run<ThreeSumHelperBenchmark>();
         //var summary = BenchmarkRunner.Run<FourSumServiceBenchmark>();
-        var summary = BenchmarkRunner.Run<SpanExamplesBenchmark>();
-        // A();
+        //var summary = BenchmarkRunner.Run<SpanExamplesBenchmark>();
     }
 
     public static async Task A()
@@ -19,7 +25,7 @@ internal class Program
         Console.WriteLine("AB");
         long x = -900;
         string v = string.Empty;
-        while (x <900)
+        while (x < 900)
         {
             x++;
             v = v + x;
