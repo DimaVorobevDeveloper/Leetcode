@@ -5,9 +5,14 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leetcode.Services", "Leetcode.Services\Leetcode.Services.csproj", "{50A21584-C8EE-4763-82D6-EE25C7C6ECCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leetcode.Tests.Unit", "Leetcode.Tests.Unit\Leetcode.Tests.Unit.csproj", "{95F8F708-6EF8-49DD-934D-6E024A005D97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leetcode.Tests.Unit", "Leetcode.Tests.Unit\Leetcode.Tests.Unit.csproj", "{95F8F708-6EF8-49DD-934D-6E024A005D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leetcode.Tests.Unit.Benchmark", "Leetcode.Tests.Unit.Benchmark\Leetcode.Tests.Unit.Benchmark.csproj", "{32BCD1B6-512D-4843-827B-84CA1953673A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leetcode.Tests.Unit.Benchmark", "Leetcode.Tests.Unit.Benchmark\Leetcode.Tests.Unit.Benchmark.csproj", "{32BCD1B6-512D-4843-827B-84CA1953673A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EB661683-490C-44E2-8D5A-546B5F501669}"
+	ProjectSection(SolutionItems) = preProject
+		read.md = read.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

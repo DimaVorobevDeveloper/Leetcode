@@ -14,7 +14,7 @@ internal class Program
     // !!! run in release mode
     private static void Main(string[] args)
     {
-        //var summary = BenchmarkRunner.Run<ThreeSumHelperBenchmark>();
+        var summary = BenchmarkRunner.Run<ThreeSumHelperBenchmark>();
         //var summary = BenchmarkRunner.Run<FourSumServiceBenchmark>();
         //var summary = BenchmarkRunner.Run<SpanExamplesBenchmark>();
     }
