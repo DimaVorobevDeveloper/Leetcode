@@ -1,4 +1,5 @@
-﻿namespace Leetcode.Services;
+﻿
+namespace Leetcode.Services;
 
 /// <summary>
 /// https://leetcode.com/problems/trapping-rain-water/
@@ -38,11 +39,13 @@ public class TrapService
         int currentVolume = 0;
         var currentHeigts = new List<int>();
         var isFirstAlreadyHere = false;
+        // если шаг уже на увеличение идет
+        var isStepHigher = false;
         foreach (var heightItem in height)
         {
             i++;
             // если встретился 0 и сейчас сбит флаг подсчета
-            if (heightItem == 0 && !isCounting) //  || prevHeight == heightItem)
+            if (heightItem == 0 && !isCounting && !isStepHigher)
             {
                 continue;
             }
@@ -50,6 +53,9 @@ public class TrapService
             // когда идет увеличение, но еще нет подсчета
             if (!isCounting && prevHeight < heightItem)
             {
+                prevHeight = heightItem;
+                currentMaxValue = heightItem;
+                isStepHigher = true;
                 continue;
             }
 
@@ -116,9 +122,10 @@ public class TrapService
             // с новыми параметрами
             if (i == height.Length && currentMaxValue > heightItem)
             {
+                var maxOfRest = currentHeigts.Max();
                 if (currentMaxValue != heightItem && !isFirstAlreadyHere)
                 {
-                    currentHeigts.Insert(0, heightItem);
+                    currentHeigts.Insert(0, --currentMaxValue);
                     isFirstAlreadyHere = false;
                 }
 
@@ -132,8 +139,8 @@ public class TrapService
                 var a = currentHeigts[0];
                 var b = currentHeigts[^1];
 
-                if (a > b)
-                    currentHeigts[0] = a - 1;
+                if (a > maxOfRest)
+                    currentHeigts[0] = maxOfRest;
 
                 break;
             }
@@ -146,5 +153,49 @@ public class TrapService
 
         return volume;
     }
+
+    public int Trap2(int[] data)
+    {
+        var sum = 0;
+
+        var ltr = new Head(1, -1, 0);
+        var rtl = new Head(-1, data.Length, 0);
+        var nextIndex = 0;
+        do
+        {
+            var smallestHead = ltr.value < rtl.value ? ltr : rtl;
+
+            nextIndex = smallestHead.index + smallestHead.direction;
+
+            var nextValue = nextIndex >= 0 && nextIndex < data.Length ? data[nextIndex] : 0;
+
+            if (nextValue > smallestHead.value)
+            {
+                smallestHead.value = nextValue;
+            }
+            else
+            {
+                var rem = smallestHead.value - nextValue;
+                sum += rem;
+            }
+
+            smallestHead.index = nextIndex;
+        } while (ltr.index != rtl.index);
+
+        return sum;
+    }
 }
 
+public class Head
+{
+    public Head(int direction, int index, int value)
+    {
+        this.direction = direction;
+        this.index = index;
+        this.value = value;
+    }
+
+    public int direction;
+    public int index;
+    public int value;
+}
